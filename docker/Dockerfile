@@ -12,7 +12,8 @@ RUN  echo "deb ${UBUNTU_MIRROR} ${UBUNTU_FLAVOR} main universe\n" > /etc/apt/sou
   && echo "deb ${UBUNTU_MIRROR} ${UBUNTU_FLAVOR}-updates main universe\n" >> /etc/apt/sources.list \
   && echo "deb ${UBUNTU_MIRROR} ${UBUNTU_FLAVOR}-security main universe\n" >> /etc/apt/sources.list
 
-LABEL maintainer "Team EP <diemol+team-ep@gmail.com>"
+LABEL maintainer "Ricardo Maia <ricardo.santos@gsw.com.br>"
+LABEL maintainer "Victor Siqueira <victor.siqueira@gsw.com.br>"
 
 # No interactive frontend during docker build
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -147,7 +148,7 @@ RUN apt-get -qqy update \
 # Full list at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 #  e.g. "US/Pacific" for Los Angeles, California, USA
 # e.g. ENV TZ "US/Pacific"
-ENV TZ "Europe/Berlin"
+ENV TZ "America/Sao_Paulo"
 # Apply TimeZone
 # Layer size: tiny: 1.339 MB
 RUN echo "Setting time zone to '${TZ}'" \

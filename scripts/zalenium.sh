@@ -15,7 +15,7 @@ LT_ENABLED=${LT_ENABLED:-false}
 VIDEO_RECORDING_ENABLED=${VIDEO_RECORDING_ENABLED:-true}
 SCREEN_WIDTH=${SCREEN_WIDTH:-1920}
 SCREEN_HEIGHT=${SCREEN_HEIGHT:-1080}
-TZ=${TZ:-"Europe/Berlin"}
+TZ=${TZ:-"America/Sao_Paulo"}
 SEND_ANONYMOUS_USAGE_INFO=${SEND_ANONYMOUS_USAGE_INFO:-true}
 START_TUNNEL=${START_TUNNEL:-false}
 DEBUG_ENABLED=${DEBUG_ENABLED:-false}
@@ -242,14 +242,13 @@ EnsureDockerWorks()
 
 DisplayDataProcessingAgreement()
 {
-    echo "*************************************** Data Processing Agreement ***************************************"
-    echo -e "By using this software you agree that the following non-PII (non personally identifiable information)
-data will be collected, processed and used by Zalando SE for the purpose of improving our test
-infrastructure tools. Anonymisation with respect of the IP address means that only the first two octets
-of the IP address are collected.
-
-See the complete license at https://github.com/zalando/zalenium/blob/master/LICENSE.md"
-    echo "*************************************** Data Processing Agreement ***************************************"
+    echo "******************************************** GSW ********************************************"
+    echo -e "This is a custom build made by Ricardo Maia and Victor Siqueira, from the original Zalenium.
+The original software collects personal data for google analytics. In this version, no data is collected.
+That means that you can use this software with no worry.
+If you need further assistance, feel free to ask the group at qa@gsw.com.br
+Latest update: 2019-07-31"
+    echo "******************************************** GSW ********************************************"
 }
 
 DockerTerminate()
@@ -291,8 +290,9 @@ DockerTerminate()
         if [[ "${project.build.finalName}.jar" == *"SNAPSHOT"* ]]; then
             echo "Not sending info to GA since this is a SNAPSHOT version"
         else
-            curl ${GA_ENDPOINT} "${args[@]}" \
-                --silent --output /dev/null &>/dev/null
+            #curl ${GA_ENDPOINT} "${args[@]}" \
+            #    --silent --output /dev/null &>/dev/null
+            echo "${args[@]} not sent!"
         fi
 
     fi
@@ -739,8 +739,9 @@ StartUp()
         if [[ "${project.build.finalName}.jar" == *"SNAPSHOT"* ]]; then
             echo "Not sending info to GA since this is a SNAPSHOT version"
         else
-            curl ${GA_ENDPOINT} \
-                "${args[@]}" --silent --output /dev/null &>/dev/null & disown
+            #curl ${GA_ENDPOINT} \
+            #    "${args[@]}" --silent --output /dev/null &>/dev/null & disown
+            echo "${args[@]}"
         fi
 
     fi
